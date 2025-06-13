@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // передвижение персонажа
+    // передвижение персонажf
+    public Rigidbody2D rb;
 
     public KeyCode moveUpKey = KeyCode.W;
     public KeyCode moveLeftKey = KeyCode.A;
@@ -11,17 +12,21 @@ public class PlayerController : MonoBehaviour
 
     public float speedX;
     public float speedY;
+    public float jump;
+
+
 
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
-        if (Input.GetKey(moveUpKey))
+        if (Input.GetKey(KeyCode.Space))
         {
-            speedY = 0.1f;
+            rb.AddForce(new Vector2(rb.velocity.x, jump));
         }
 
         if (Input.GetKey(moveLeftKey))
